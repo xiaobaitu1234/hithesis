@@ -1,0 +1,98 @@
+% !Mode:: "TeX:UTF-8"
+
+\chapter{基于多阶段学习的CDN服务域名识别方法}[jiyuTSVMdeCDNfuwuyumingshibiefangfa]
+
+
+
+
+\section{引言}[yinyan]
+
+
+\section{相关工作}[xiangguangongzuo]
+
+
+
+\section{基于半监督学习的数据集构建方法}[pulearn]
+
+\subsection{域名数据集选择方法}[]
+当前较为出色的域名排行有Traco\cite{Pochat2018}排名以及SecRank\cite{Xie2022}排名。其中，Traco融合了多种国际排名，如Alexa、Umbrella、Majestic以及Farsight，具有较好的研究价值。但由于其提供域名多为SLD域名，不适合用来做CNAME检测及HTTP获取。因此，本文选择具有包含多种标签长度域名的SecRank排名作为研究对象。
+
+这里我们考虑使用CNAME的二级域名(SLD)的WHOIS信息进行识别，判定是否为公司CDN入口域名。
+
+于是方法就变成了CNAME特征串判定+CNAME的SLD的WHOIS判定补充+HTTP响应头判定。
+\subsection{特征选取}[]
+
+先前研究表明，中国大陆主要以以DNS全局负载均衡系统作为CDN IP选择依据，在这里，我们选取SecRank数据集的www域名以及SLD域名作为研究对象，因为他们大概率是网站，共计筛选出20W个。其次，我们选择来自不同地区的***个LDNS对域名集合进行DNS解析，并对包含解析结果的域名进行HTTP Head命令解析，获取其响应头信息字典。根据上述条件进行CDN代理标注。标注规则如下
+
+\begin{description}
+	\item[CDN代理域名] 域名CNAME记录包含CDN服务商关键字
+	\item[非CDN代理域名] 域名多地解析结果相同，不含CNAME记录，且HTTP响应过程中不存在类似302、307等跳转状态码。
+\end{description}
+
+根据上述条件对样本筛选后，我们保守得判定出***个CDN域名，以及***个非CDN域名。
+
+根据当前数据集，我们对HTTP响应头进行特征提取。
+
+提取后排序如下：
+
+因此，我们选取前10个特征作为特征提取依据。
+
+\subsection{基于PU learn的小样本标注方法}[]
+
+在对特征提取过程中，我们选取过程较为保守，即仅根据一些热点厂商的CNAME特征进行CDN代理域名判定，对使用一些CNAME特征白名单不包含厂商特征的域名，没有完整加入到正例集，且含CNAME记录的域名也存在部分未使用CDN服务。因此，这里采用PU learn方法对数据集中未标注的数据进行判定。
+
+
+
+\subsection{基于TSVM的数据集扩充方法}[]
+由于本文研究内容面向使用DNS作为全局负载均衡的CDN，其数据可从含CNAME记录的域名中产生。
+NB-tree方法\cite{Hou2021}指出，使用CNAME、WHOIS以及HTTP响应头可以较好识别CDN服务商。然而，现网环境下，域名与IP的映射关系存在一定误差\cite{Ma2021}。其方法过于依赖IP的相关信息，IP变量的引入势必会对识别精度产生影响。
+
+本文在NB-tree方法\cite{Hou2021}基础上进行改进，舍弃IP的相关信息。选取识别效果较好的CNAME及其二级域名（SLD）的WHOIS信息，结合HTTP响应头的特征分类进行识别器构造。首先，当前CDN识别数据集在构建时，大多采用监督学习，对标注后的数据进行训练。在实际场景中，根据符合厂商特征的CNAME特征串对HTTP响应头标注为正例准确率较高，但对未明确识别的数据进行类别划分较为困难。因此，本文使用PU learning\cite{Bekker2020}方法(一种从正例和未标注数据集学习的二元分类方法)进行小样本数据集标注工作。得到一批存在正例和负例的样本。随后，使用TSVM\cite{Joachims1999}（一种经典半监督 SVM）方法来构造大样本集，增加分类器的准确率。
+
+
+\section{基于半监督集成学习的CDN节点识别方法}[pulearn]
+
+
+
+
+算法在使用之前，要测一下数据集精度！！！！！！！，数据集可用之后，还要拿别人的算法对比。
+
+
+使用决策树结合机器学习方法评估 CDN 对站点返回 HTTP报文的 headers 字典特征。此处可以结合多种方法对比，如SVM，随机森林，朴素贝叶斯等。（其中朴素贝叶斯用于跟侯锐杰的方法对比）
+
+\section{实验结果}[shiyanujieguo]
+
+
+
+\subsection{数据集构建精度结果}[]
+在这里验证数据集构建方法的精度，如果达到什么条件？？？可以采纳？？？
+
+
+
+\subsection{CNAME关键字发现方法结果}[]
+拿出来看看找到多少家的特征串，说明一下，找找官方公布的数据对比一下，说一下我发现了百分之多少的厂商串
+
+
+
+\subsection{CDN域名识别结果}[]
+这里给出一个F1分数什么的作为结果验证。
+
+效果评估部分： 在这里，可以先考虑不使用 CNAME，作为极端情况的特征串发现方法。
+
+应用部分：给出一个使用 SecRank 数据集\cite{Xie2022}情况下，解析出CDN 服务的情况，在这里给出《互联网基础设施与软件安全》类似的 CDN 报告图片。（给出厂商数量，厂商使用量，排名等）
+
+
+
+\section{本章小结}[benzhangxiaojie]
+
+
+
+
+本章旨在提取CDN服务域名特征，给出一种CDN入口地址特征串发现方法。为后续测量分析部分提供厂商分类支撑。
+
+
+
+% Local Variables:
+% TeX-master: "../main"
+% TeX-engine: xetex
+% End:

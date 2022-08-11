@@ -1,0 +1,67 @@
+% !Mode:: "TeX:UTF-8"
+
+\chapter{基于***的D???NS解析效率测量}[Example]
+
+
+\section{引言}[yinyan]
+\section{相关工作}[xiangguangongzuo]
+
+\section{方法}[fangfa]
+
+\section{实验结果}[shiyanujieguo]
+\section{本章小结}[benzhangxiaojie]
+
+
+1.公共DNS选取策略（很多论文都是用LDNS，用运营商提供的递归来判定，由于大约有13\%的用户使用公共DNS\cite{Callejo-2019-Measuring}，因此引入部分公共DNS进行测量） 
+选取TOP域名测一遍，观察准确率，成功率等（出一个算法)
+（研究表明，在开启EDNS解析时，会附带终端用户的部分IP信息。此使，DNS全局负载均衡可以根据这些信息来返回对当前用户更优的选择。由ECS推出的Akamai映射方案为公共DNS服务的用户提供了显著的性能优势\cite{Chen2015}。相反，当终端用户未启用EDNS时，DNS负载均衡时会根据LDNS的地理位置进行智能解析\cite{Hao2018}）
+同时，根据用户举例LDNS的距离不同，最终结果的效果也不尽人意\cite{pan-2003-dns},目前也有研究提供一种用户选择最近开放DNS服务\cite{Zhang-2021-Scale-platform}方法。因此，在本次测量过程中，以LDNS作为聚类中心分配用户请求，理想化假定用户请求与自己距离最近的LDNS。同时为减少探测点网络性能的差距，我们使用请求时间减去探测点到DNS解析器的时间，减少探测点网络情况对实验结果的影响（考虑是否引用专利、论文~！！！！）。
+ 
+解释方面：CDN入口CNAME域名的TTL比较长，在使用时可以忽略这部分时延。可以找一些CDN域名，向权威CNAME，以及向CDN解析CNAME请求对比一下TTL。
+这个需要自己搭建递归做一下实验吧！！！ 研究\cite{Moura2019}建议对DNS负载均衡使用较短的TTL而其他的建议长一些,且根据Li\cite{Li2020}的基于机器学习识别CDN方案，IP和TTL相关特征对域名CDN识别较为有效。   
+
+2.基于约减策略，观察CDN厂商是否根据使用频率来修改TTL值？
+
+
+<为什么要测量DNS呢，因为看CDN厂商对LDNS的支持程度，一定程度上对用户有一定好处，
+我们也可以绘制一个延迟地图，给用户作为选择>
+我们选择secrank的合适域名，对全国常用公共递归进行判定，对每一个递归拿到一个平均值，以及解析成功率
+根据这些对每一个递归进行评分，最终显示到地图上。同时给出一个总分，供用户选择CDN时有一定区域偏向，或选择多款CDN来弥补偏向
+
+
+\chapter{基于***的IP通信时延测量方法}[IPtongxinshiyanceliang]
+\section{引言}[yinyan]
+\section{相关工作}[xiangguangongzuo]
+\section{实验结果}[shiyanujieguo]
+\section{本章小结}[benzhangxiaojie]
+
+是否探测节点数量？？？？？？？？
+
+1.使用全球ping等工具抓数据
+2.对数据进行清晰（聚类分析等）
+3.对数据进行分析（想一个算法）
+
+
+
+
+\chapter{基于***的数据分析方法}[shujufenxi]
+
+或者是分时段、分地区测量（上下文，用于服务第三章、第四章）
+
+1.想一个方法来构造评估策略。
+
+层次分析？有客观部分，加一个算法
+
+
+2.研究一下CDN测量结果评价标准，有没有相应的国标等。重点关注测量方法，测量效率，评估方面。
+
+
+
+
+
+
+
+% Local Variables:
+% TeX-master: "../main"
+% TeX-engine: xetex
+% End:

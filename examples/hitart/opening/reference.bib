@@ -160,6 +160,14 @@
 	volume = {9},
 	year = {2021},
 }
+
+@article{zhu-2021,
+   author = {朱文武 and 王智},
+   journal = {中国科学:信息科学},
+   title = {数据驱动的网络多媒体边缘内容分发},
+   year = {2021},
+}
+
 @inproceedings{Moura2019,
 	author = {Giovane C M Moura and John Heidemann and Ricardo de O Schmidt and Wes Hardaker},
 	journal = {Proceedings of the Internet Measurement Conference},
@@ -368,12 +376,190 @@
    volume = {24},
    year = {2001},
 }
-
-@techreport{lukeyu-2021-DNS,
+ 
+@phdthesis{lukeyu-2021-DNS,
    author = {陆柯羽},
-   city = {哈尔滨},
-   institution = {哈尔滨工业大学},
+   ADDRESS = {哈尔滨},
+   School = {哈尔滨工业大学},
    month = {10},
-   title = {RESEARCH ON AVAILABILITY MEASUREMENT AND EVALUATION METHODS FOR OPEN DNS RESOLVERS},
+   title = {开放域名解析器可用性测量与评估方法研究},
    year = {2021},
+	 	pages      = {18-40},
+		language   = "zh", 
+} 
+
+
+@article{yan-2022,
+  title={基于域名系统知识图谱的CDN域名识别技术},
+  author={闫志豪 and 刘京菊 and 郭徽 and 郭兵阳},
+  journal={计算机工程与应用},
+  volume={58},
+  number={6},
+  pages={8},
+  year={2022},
+}
+
+@masterthesis{康梦晓2014IP,
+  title={IP网络时延测量与估计技术的研究与实现},
+  author={康梦晓},
+	address = "北京",
+  school={北京邮电大学},
+  year={2014},
+	pages = {17-26},
+	language = "zh", 
+} 
+
+
+@article{fu2018,
+   abstract = {The prohibitive cost of deploying a sophisticated DNS-based CDN makes anycast-based CDN an attractive alternative for new or small CDN operators. In anycast-based CDNs, user requests are naturally routed to the &#x201C;closest&#x201D; server determined by Internet routing. For the operators, however, this comes at a cost&#x2014;<i>loss of control</i>&#x2014;how the traffic is routed is entirely at the mercy of BGP routing. The &#x201C;closest&#x201D; server may be overloaded, or simply not the best choice. This &#x201C;loss of control&#x201D; undermines the <i>scalability</i> of anycast-based CDN architectures. To have control over how traffic is routed, existing work either requires adding a large amount of complexity to the system (high Capex/Opex) or is unable to achieve precise and fine-grained control. This paper proposes T-SAC, a scalable anycast-based CDN architecture that capitalizes on the programmability and flexibility of SDN/NFV, enabling fine-grained traffic redirection among CDN servers. T-SAC achieves precise control by leveraging a load-based redirection algorithm and a single 1-bit no-redirect flag. We implement T-SAC in the real system and evaluate its performance from various aspects using DASH and web applications. The results show that T-SAC is capable of redirecting the right amount of traffic at the right time to the right servers, making the system highly scalable.},
+   author = {Qiang Fu and Bradley Rutter and Hao Li and Peng Zhang and Chengchen Hu and Tian Pan and Zhangqin Huang and Yibin Hou},
+   doi = {10.1109/JSAC.2018.2871323},
+   issn = {1558-0008},
+   issue = {12},
+   journal = {IEEE Journal on Selected Areas in Communications},
+   month = {12},
+   pages = {2757-2774},
+   title = {Taming the Wild: A Scalable Anycast-Based CDN Architecture (T-SAC)},
+   volume = {36},
+   year = {2018},
+}
+
+
+@article{吴金福2014中国大陆,
+  title={中国大陆CDN的测量方法研究与性能分析},
+  author={吴金福 and 田野},
+  journal={计算机工程与科学},
+  volume={36},
+  number={4},
+  pages={620-626},
+  year={2014},
+}
+
+@article{惠雯2012内容分发网络请求路由研究,
+  title={内容分发网络请求路由研究},
+  author={惠雯 and 尹浩 and 林闯 and 杨扬},
+  journal={计算机科学},
+  volume={39},
+  number={2},
+  pages={8},
+  year={2012},
+}
+
+@article{2005内容分发网络性能测量方法研究与实现,
+  title={内容分发网络性能测量方法研究与实现},
+	author={张兴军 and 钱德沛 and 伍卫国 and 张文杰 and 何戈},
+  journal={小型微型计算机系统},
+  volume={26},
+  number={1},
+  pages={5},
+  year={2005},
+}
+
+
+@article{葛志诚2018一种移动内容分发网络的分层协同缓存机制,
+  title={一种移动内容分发网络的分层协同缓存机制},
+  author={葛志诚 and 徐恪 and 陈靓 and 李彤 and 姚龙 and 沈蒙},
+  journal={计算机学报},
+  volume={41},
+  number={12},
+  pages={18},
+  year={2018},
+}
+
+
+@article{胡治国2017IP,
+  title={IP网络性能测量研究现状和进展},
+  author={胡治国 and 田春岐 and 杜亮 and 关晓蔷 and 曹峰},
+  journal={软件学报},
+  volume={28},
+  number={1},
+  pages={30},
+  year={2017},
+}
+
+@article{liu2018,
+   abstract = {With the development of network function virtualization and software-defined network standards, the mobile network operators are interested in integrating content delivery network (CDN) functionalities into the mobile network to enhance their capability for supporting content oriented services. We consider a mobile CDN system, where Base Stations (BSs) are equipped with storage for replicating content. In such a system, BSs cooperation in replying user requests through backhaul links is a widely adopted mechanism. Blindly redirect user requests upon content placement can cause traffic congestion. As a result, congestion avoidance and load balancing is an important issue to be tackled in this scenario. We investigated the joint optimization problem of content placement and request redirection for the BS-based mobile CDN. Specifically, each BS maintains a transmission queue for replying requests issued from other BSs. Network congestion and BSs load balancing can be jointly considered through guaranteeing network stability. We employ the stochastic optimization model to minimize the long-term time-average transmission cost under network stability constraints. By using the Lyapunov optimization technique, we transform the long-term problem into a set of linear programs solved in each short time duration, and we develop an on-line algorithm to efficiently decide content placement and request redirection without requiring a priori knowledge on the random network state information. Through our theoretical analysis, the performance of the algorithm on optimality and network stability is given. The evaluation confirms that our solution can achieve low transmission cost, whilst avoiding congestion and balancing traffic loads.},
+   author = {Jiayi Liu and Qinghai Yang and Gwendal Simon},
+   doi = {10.1109/TNET.2018.2804979},
+   issn = {1558-2566},
+   issue = {2},
+   journal = {IEEE/ACM Transactions on Networking},
+   month = {4},
+   pages = {851-863},
+   title = {Congestion Avoidance and Load Balancing in Content Placement and Request Redirection for Mobile CDN},
+   volume = {26},
+   year = {2018},
+}
+
+
+@article{Tang-2018,
+   author = {Guoming Tang and Huan Wang and Kui Wu and Deke Guo},
+   doi = {10.1109/TNET.2018.2881169},
+   issue = {1},
+   journal = {IEEE/ACM Transactions on Networking},
+   pages = {98-111},
+   title = {Tapping the Knowledge of Dynamic Traffic Demands for Optimal CDN Design},
+   volume = {27},
+   year = {2019},
+}
+
+@article{Li-2019-AI-attention-CDN,
+   abstract = {It has become an increasingly popular trend to replicate network content across a geographically distributed structure. The Content Delivery Network (CDN) is a prime example. Content providers have been struggling to improve the Quality of Experience (QoE) of its clients via accurate predictions of CDN performance, which is a crucial prerequisite for subsequent policies like resource scheduling. Methods of Artificial Intelligence (AI) like machine learning and deep learning have shown their advantages on performance predictions recently, but it is still challenging to simultaneously ensure accuracy, generality and low overhead. In this paper, we propose a general AI-defined attention network to make predictions on CDN performance, the results of which can improve CDN resource optimal scheduling. First, we formulate this CDN performance prediction problem as a sequence learning problem. And then we design a two-phase deep neural network with attention so that our model can work well for all cache groups in a CDN. Experiment results show that our model outperforms state-of-art models in accuracy while maintaining a relatively low training overhead.},
+   author = {Junnan Li and Zhihui Lu and Yu Tong and Jie Wu and Shalin Huang and Meikang Qiu and Wei Du},
+   doi = {https://doi.org/10.1016/j.future.2019.05.067},
+   issn = {0167-739X},
+   journal = {Future Generation Computer Systems},
+   keywords = {Artificial intelligence,Attention mechanism,Content delivery network,Deep neural network,Sequence learning},
+   pages = {759-769},
+   title = {A general AI-defined attention network for predicting CDN performance},
+   volume = {100},
+   url = {https://www.sciencedirect.com/science/article/pii/S0167739X19307356},
+   year = {2019},
+}
+
+
+@inproceedings{Jalalpour2018,
+   abstract = {A Content Delivery Network (CDN) employs edge-servers caching content close to end-users to provide high Quality of Service (QoS) in serving digital content. Attacks against edge-servers are known to cause QoS degradation and disruption in serving end-users. Protecting edge-servers is vital but represents a complex task. Not only must the attack mitigation be immediately effective, but the corresponding overhead should also not negatively affect the QoS of legitimate users. We propose a software-based security system for CDN edge-servers to mitigate various attacks. The approach is to automatically react to threats by deploying and managing security services. These security services are realized using virtualized security function chains created, configured, and removed dynamically. The desired system behavior is governed by high-level security policies dictated by a network operator. We demonstrate how our system can be programmed using these policies to automatically handle real-world attacks. Our performance evaluation shows that our system is low-overhead, immediately responds to threats, and quickly recovers legitimate traffic throughput.},
+   author = {Elaheh Jalalpour and Milad Ghaznavi and Daniel Migault and Stere Preda and Makan Pourzandi and Raouf Boutaba},
+   doi = {10.1109/NETSOFT.2018.8459910},
+   journal = {2018 4th IEEE Conference on Network Softwarization and Workshops (NetSoft)},
+   month = {6},
+   pages = {46-54},
+   title = {A Security Orchestration System for CDN Edge Servers},
+   year = {2018},
+}
+
+
+@article{benkacem2018optimal,
+  title={Optimal VNFs placement in CDN slicing over multi-cloud environment},
+  author={Benkacem, Ilias and Taleb, Tarik and Bagaa, Miloud and Flinck, Hannu},
+  journal={IEEE Journal on Selected Areas in Communications},
+  volume={36},
+  number={3},
+  pages={616--627},
+  year={2018},
+  publisher={IEEE}
+}
+
+
+@article{salahuddin2017survey,
+  title={A survey on content placement algorithms for cloud-based content delivery networks},
+  author={Salahuddin, Mohammad A and Sahoo, Jagruti and Glitho, Roch and Elbiaze, Halima and Ajib, Wessam},
+  journal={IEEE Access},
+  volume={6},
+  pages={91--114},
+  year={2017},
+  publisher={IEEE}
+}
+
+
+@article{stamos2010cdnsim,
+  title={Cdnsim: A simulation tool for content distribution networks},
+  author={Stamos, Konstantinos and Pallis, George and Vakali, Athena and Katsaros, Dimitrios and Sidiropoulos, Antonis and Manolopoulos, Yannis},
+  journal={ACM Transactions on Modeling and Computer Simulation (TOMACS)},
+  volume={20},
+  number={2},
+  pages={1--40},
+  year={2010},
+  publisher={ACM New York, NY, USA}
 }

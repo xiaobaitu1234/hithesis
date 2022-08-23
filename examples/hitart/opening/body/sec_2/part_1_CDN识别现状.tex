@@ -1,0 +1,33 @@
+% !Mode:: "TeX:UTF-8"
+
+\subsection{CDN服务商识别研究现状}
+
+
+CDN服务商识别作为从外部研究CDN的必须环节，有着许多应用场景。如CDN服务使用量排名，统计当前域名排名情况，分析其使用CDN服务商的使用量，提供选择依据。同时，与CDN有关的安全漏洞、攻击防范等问题也有较多关注。如使用CDN作为DDos攻击手段\cite{Guo2020}来瘫痪源站、利用CDN的新型审查规避技术\cite{Wei2021}为违规站点提供保护、未验证源服务器证书\cite{SHOBIRI2021}等危害。相应的，Jalalpour\cite{Jalalpour2018}从CDN边缘服务器的安全问题入手，使用可动态构建的虚拟化安全功能链实现防护功能。实现低开销应对威胁、迅速恢复吞吐量的目的。综上所述，发现CDN攻击事件、漏洞检测及修复、融合CDN选择、CDN服务排名等问题，都离不开CDN厂商的识别。
+
+目前，学术界和工业界对CDN厂商的识别可概括为下述三种方式。
+ 
+(1) 关键字匹配。许多研究\cite{Huang2008,Adhikari2014,Guo2018}使用CNAME关键字作为基础匹配机制，对域名的CNAME记录与CDN服务商提供的特征后缀匹配。其次，根据HTTP错误日志\cite{Huang2008,Guo2018}也可以辅助识别，根据响应报文检验，判定其是否包含CDN服务商的关键字。也有利用域名或IP的WHOIS\cite{Adhikari2014}信息、PTR\cite{Chen2019}记录与CDN服务商关键字进行匹配。或是根据域名解析的IP地址，是否归属于CDN服务商公开的IP范围进行识别\cite{Choffnes2017}。特别的，猜测CDN边缘服务器的命名规则以构建主机名，并进行DNS探测以获得更多的节点IP\cite{Hohlfeld2018,Timm2018}，也是一种解决方案。
+
+(2) 机器学习等方法。CDN识别与机器学习等方法融合也成为一种趋势。CNCERT\cite{Li2020}的研究表明使用CDN的域名，其在IP和TTL的特征有明显区分度，且样本识别精度可以达到90\%以上。Ma\cite{Ma2021}提出了基于半监督GNN模型的CDN节点发现，将域名与IP二部图的关联进一步细化，降低误判。Chen{Chen2019}提出基于LSTM的FCDR方法，将域名字符、经验信息、地理和时间相关特征作为输入，对域名进行CDN服务判定。Hou\cite{Hou2021}提出了基于Naive Bayes Tree\cite{Liang2006}，结合CNAME、WHOIS、HTTP响应头的统计学习方法\cite{Hou2021}。国防科技大学的闫志豪\cite{yan-2022}等人也提出了一种基于域名系统知识图谱的CDN域名识别技术，使用域名的MX、NS、CNAME、IP、地理位置等信息综合识别。 
+
+(3) 使用互联网开源工具或公开服务接口。如CDN Finder\footnote{https://www.cdnplanet.com/tools/cdnfinder/}、CDN云观测\footnote{https://cdn.chinaz.com/}
+或findCDN\footnote{https://github.com/cisagov/findcdn}等工具。其中，CDN Finder使用页面资源列表来识别每个唯一主机名的CDN，通过获取页面资源并检查响应标头、执行DNS解析并检查完整的CNAME链获取待判定特征，根据
+其维护的Header-to-CDN和CNAME-to-CDN列表来匹配。若匹配失败，则根据其服务IP所属AS来匹配CDN服务商。findCDN则是通过HTTPS服务器响应头、CNAME记录结合IP WHOIS信息来匹配CDN服务商。 
+
+% \begin{enumerate}[label={(\arabic*)}]
+
+% 	\item 
+% 	\item 
+% 	\item 
+% \end{enumerate}
+
+从CDN识别精度而言，不同研究发现的数量不尽相同。基于匹配机制的识别方法一般精度在85\%以上，对于当前公开的CDN识别服务，如CDN Finder、CDN云观测以及findCDN等，其内在机制也是使用特征库对所选取特征进行匹配操作。集成机器学习或深度学习技术后，精度有进一步提高，如使用域名IP特征和TTL特征的方案可以达到90\%的精度，对于使用更多信息源的深度学习方案\cite{Ma2021}，其样本精度可以达到98\%。相应的，高精度的代价是使用更多信息源。
+
+从解析开销而言，Adhikari\cite{Adhikari2014}基于主被动测量，使用规范主机名（CNAME）、IP地址的WHOIS进行所有者识别，从而判定Hulu和Netflix使用的CDN服务商。Huang\cite{Huang2008}基于获取大量Windows Live搜索日志，从主机名中提取CNAME记录，并判定其是否属于特定目标CDN。以此来构建其特征识别库。Ma\cite{Ma2021}的图神经网络方法，更是集成了地理、时间等信息，在获得高精度的同时也极大增加了数据探测成本。 
+
+
+% Local Variables:
+% TeX-master: "../section_2_研究现状"
+% TeX-engine: xetex
+% End:

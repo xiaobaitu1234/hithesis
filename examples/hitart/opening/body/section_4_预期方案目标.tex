@@ -3,17 +3,57 @@
 \section{研究方案及进度安排，预期达到的目标和已取得的研究成果}
 本节对研究方案及进度安排，预期达到的目标和已取得的研究成果进行介绍。
 \subsection{研究方案}
-本研究的主要内容从CDN服务商识别技术、CDN时延特征测量以及CDN放置策略三个方面展开。
+为了实现面向时延特征的CDN服务质量测绘及部署优化策略，首先需要获取国内CDN服务商的特征及使用情况，该数据需要通过实现CDN服务商识别系统得到；然后需要根据CDN使用情况，选取测量目标并进行测绘。该步骤需要使用分布式代理测量平台实现，并构建服务质量评估方法给出评价值。最后需要根据CDN放置效果设计CDN放置优化策略，得到一种成本与服务质量均衡的放置方案。本文研究方案的整体结构如图 \ref{fig:研究整体结构图}所示。
 
-\subsubsection{基于探测空间约减的CDN服务商识别技术}
-本研究方案主要用于CDN服务商识别，主要从探测空间约减和CDN识别特征集扩充两步进行阐述。
+ 
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[grow cyclic, text width=2.7cm, align=flush center,
+    level 1/.style={level distance=5cm,sibling angle=120},
+    level 2/.style={level distance=3cm,sibling angle=90},
+		rotate=90
+		]
+  
+    \node{研究整体结构图}
+    child { node {这里需要放一张图} 	}
+		child { node {这里需要放一张图} 	}
+		child { node {这里需要放一张图}  };
+  \end{tikzpicture}
+
+	\caption{研究整体结构图}
+	\label{fig:研究整体结构图}
+\end{figure}
+
+
+\subsubsection{基于探测空间约减的CDN服务商识别系统}
+基于探测空间约减的CDN服务商识别系统包括探测空间约减和CDN识别特征集扩充模块，系统模块内容及关系如图 \ref{fig:基于探测空间约减的CDN服务商识别系统模块关系}所示：
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[grow cyclic, text width=2.7cm, align=flush center,
+    level 1/.style={level distance=5cm,sibling angle=120},
+    level 2/.style={level distance=3cm,sibling angle=90},
+		rotate=90
+		]
+  
+    \node{基于探测空间约减的CDN服务商识别系统模块关系}
+    child { node {这里需要放一张图} 	}
+		child { node {这里需要放一张图} 	}
+		child { node {这里需要放一张图}  };
+  \end{tikzpicture}
+
+	\caption{基于探测空间约减的CDN服务商识别系统模块关系}
+	\label{fig:基于探测空间约减的CDN服务商识别系统模块关系}
+\end{figure}
+
 
 
 （1）\textbf{基于FDNS聚类的探测空间约减方法研究}  
 
 本文研究识别数据获取过程中，发包量主要集中在DNS解析部分，且主要考虑其覆盖面和解析目标选取合理性。针对覆盖面问题，本文考虑使用基于FDNS聚类的探测方法，对于解析目标，本文将选取重点域名排名，具体介绍如下。
 
-1)CDN服务在进行智能DNS解析，会根据解析请求的发送方特征，返回相应较优的A记录，使用户得到良好的时延体验。因此，在模拟多地域探测时（即使用较少探针或单探针解析，获取与多个不同地域探针解析覆盖效果相同的结果集）。需要借助模拟解析地区的区域递归DNS服务器（LDNS），并舍弃EDNS扩展选项，因为EDNS可能会携带请求方IP地址，使得CDN根据智能DNS返回重复结果。针对这种使用LDNS作为请求目标服务器的方法，本文称之为基于LDNS聚类的探测方法。Huang\cite{Huang2008}使用基于LDNS聚类的探测方法,利用公开LDNS作为解析器，获取多个区域的解析结果。但由于许多LDNS被配置非公开，即只为其内部用户进行DNS解析，因此覆盖面并不完整\cite{吴金福2014中国大陆}。哈尔滨工业大学陆柯羽研究表明，转发DNS（FDNS）占据开放DNS比重达40\%左右DNS\cite{lukeyu-2021-DNS}，远高于递归DNS占比。且转发DNS采用将解析请求转达递归等有解析能力的DNS服务器进行解析，即FDNS必然对应一个或多个递归DNS。因此，本文拟采用FDNS作为解析的请求目标，故称为基于FDNS聚类的探测方法。
+1)根据CDN就近解析原则，在模拟多地域探测时（即使用较少探针或单探针解析，获取与多个不同地域探针解析覆盖效果相同的结果集），需要借助模拟解析地区的区域递归DNS服务器（LDNS），并舍弃EDNS扩展选项，因为EDNS可能会携带请求方IP地址，使得CDN根据智能DNS返回重复结果。针对这种使用LDNS作为请求目标服务器的方法，本文称之为基于LDNS聚类的探测方法。Huang\cite{Huang2008}使用基于LDNS聚类的探测方法，利用公开LDNS作为解析器，获取多个区域的解析结果。但由于许多LDNS被配置非公开，即只为其内部用户进行DNS解析，因此覆盖面并不完整\cite{吴金福2014中国大陆}。哈尔滨工业大学陆柯羽研究表明，转发DNS（FDNS）占据开放DNS比重达40\%左右DNS\cite{lukeyu-2021-DNS}，远高于递归DNS占比。且转发DNS采用将解析请求转达递归等有解析能力的DNS服务器进行解析，即FDNS必然对应一个或多个递归DNS。因此，本文拟采用FDNS作为解析的请求目标，故称为基于FDNS聚类的探测方法。
  
 
 2)重点域名数据集选取，由于Alexa排名目前处于停止更新状态，本文考虑当前较为出色的域名排行：Traco\cite{Pochat2018}排名以及SecRank\cite{Xie2022}排名。其中，Traco融合了多种国际排名，如Umbrella、Majestic以及Farsight，具有较好的研究价值。但由于其提供域名多为主域名，不适合用来做CNAME检测及HTTP获取。因此，本文选择具有包含多种标签长度域名的SecRank排名作为研究对象。进一步的，针对排名域名选择，本文考虑使用www域名以及SLD域名作为研究对象，因为它们大概率是站点。从减少探测目标的角度来约减DNS发包量，从而降低探测对实网环境的污染。 
@@ -64,7 +104,7 @@
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[grow cyclic, text width=2.7cm, align=flush center,
-    level 1/.style={level distance=5cm,sibling angle=120},
+    level 1/.style={level distance=3cm,sibling angle=120},
     level 2/.style={level distance=3cm,sibling angle=90},
 		rotate=90
 		]
@@ -84,8 +124,8 @@
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}[grow cyclic, text width=2.7cm, align=flush center,
-    level 1/.style={level distance=5cm,sibling angle=90},
-    level 2/.style={level distance=3cm,sibling angle=90},
+    level 1/.style={level distance=4cm,sibling angle=90},
+    level 2/.style={level distance=2cm,sibling angle=90},
 		rotate=270
 		]
   
@@ -107,7 +147,15 @@
 \end{figure}
 \FloatBarrier
 
-\subsubsection{基于多目标优化的CDN放置策略研究}
+\subsubsection{基于多目标优化博弈的CDN放置策略研究}
+本文设计基于多目标优化的CDN放置策略，如图 \ref{fig:基于多目标优化的CDN放置策略研究方案}所示。首先，采用
+\begin{figure}[ht]
+  \centering
+  \includegraphics{基于多目标优化的CDN放置策略研究方案.pdf}
+ 
+  \caption{基于多目标优化的CDN放置策略研究方案}
+  \label{fig:基于多目标优化的CDN放置策略研究方案}
+\end{figure}
 
 本研究拟使用多目标优化技术，从服务器放置成本，缓存路径选择两方面进行考量。尝试使用包括但不限于以下方式进行研究。
 
@@ -134,39 +182,39 @@
 
 	\noindent\textbf{（一）已发表论文}
 	\begin{enumerate}
-	\item Li C, Cheng Y, \textbf{Men H}, et al. Performance Analysis of Root Anycast Nodes Based on Active Measurement[J]. Electronics, 2022, 11(8): 1194.(EI检索)
+	\item Li C， Cheng Y， \textbf{Men H}， et al. Performance Analysis of Root Anycast Nodes Based on Active Measurement[J]. Electronics， 2022， 11(8): 1194.(EI检索)
 \end{enumerate}
 \noindent\textbf{（二）申请及已获得的专利}
 \begin{enumerate}
-\item 张兆心,李超,程亚楠,郭长勇,杜跃进,\textbf{门浩}. 一种获取网络数据时网络阻塞造成的噪声数据消除方法: 中国，CN202110121032.7[P]. 2022-04-15. （已授权）
-\item 张兆心,李超,柴婷婷,程亚楠,陆柯羽,郭长勇,杜跃进,\textbf{门浩}. 基于网络服务商国别标注的域名国家可控性评估方法：中国， CN202110258091.9[P]. 2021-06-01.（已受理）
-\item 张兆心,李超,程亚楠,陆柯羽,\textbf{门浩}. 一种基于多源信息定位域名根镜像节点地理位置的方法: 中国，CN202110856090.4[P]. 2021-11-02. （已受理）
-\item 张兆心,\textbf{门浩},程亚楠,梁浩宇,郭长勇,李超,赵东. 一种多设备网页中内嵌广告获取以及恶意性识别的方法: 中国，202210606165.8[P]. 2022-08-09. (已受理)
+\item 张兆心，李超，程亚楠，郭长勇，杜跃进，\textbf{门浩}. 一种获取网络数据时网络阻塞造成的噪声数据消除方法: 中国，CN202110121032.7[P]. 2022-04-15. （已授权）
+\item 张兆心，李超，柴婷婷，程亚楠，陆柯羽，郭长勇，杜跃进，\textbf{门浩}. 基于网络服务商国别标注的域名国家可控性评估方法：中国， CN202110258091.9[P]. 2021-06-01.（已受理）
+\item 张兆心，李超，程亚楠，陆柯羽，\textbf{门浩}. 一种基于多源信息定位域名根镜像节点地理位置的方法: 中国，CN202110856090.4[P]. 2021-11-02. （已受理）
+\item 张兆心，\textbf{门浩}，程亚楠，梁浩宇，郭长勇，李超，赵东. 一种多设备网页中内嵌广告获取以及恶意性识别的方法: 中国，202210606165.8[P]. 2022-08-09. (已受理)
 \end{enumerate}
 
-	
-
+ 
 \subsection{进度安排}
-论文进度安排如表\ref{table:jinduanpai}所示：
+论文进度安排如表 \ref{table:jinduanpai}所示：
 
 
 \begin{table}[htbp]
 	\centering
 	\caption{进度安排}\label{table:jinduanpai}
 	\vspace{0.5em}\wuhao
-	\begin{tabularx}{1\textwidth}{ccc}
+	\begin{tabular}{ccc}
 		\toprule
 		起始日期        & 截止日期     & 进度安排    \\
 		\midrule
 		2022年05月           & 2022年07月           & 阅读文献、调研、数据验证      \\
 		2022年07月          & 2022年08月  & 开题报告撰写，算法设计  \\
-		2022年08月         & 2022年12月   & 算法构建与实现  \\
-		2022年12月           & 2023年03月  & 算法验证与优化 \\
+		2022年08月         & 2022年11月   & CDN识别及分布式探测平台构建  \\
+		2022年11月         & 2022年2月   & CDN放置优化策略实现  \\
+		2022年2月           & 2023年03月  & 算法验证与优化 \\
 		2023年03月          & 2023年05月 &      撰写毕业论文     \\
 
 
 		\bottomrule
-	\end{tabularx}
+	\end{tabular}
 \end{table}
 
 

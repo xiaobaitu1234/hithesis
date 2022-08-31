@@ -1,11 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 
-\subsection{CDN服务质量测绘研究现状}
+\subsection{软件可信行为特征库构建}
  
-内容分发网络在建立之初就肩负着缓解源站压力，提高用户体验的使命。CDN的时延特征对于终端用户而言比较敏感。Johnson是较早研究CDN服务质量测量\cite{Johnson-2001-cdn-measure}之一，并指出CDN的价值并非提供最佳的分发点，而是避免给出性能明显较差的。Pathan认为，CDN性能\cite{Pathan-survey-2007}需要关注五个衡量指标：缓存命中率、预留带宽、代理服务器利用率、时延以及可靠性。Huang的研究指出\cite{Huang2008}，CDN主要存在两方面时延：DNS解析时延，也即CDN内部DNS系统向终端用户提供“最佳”CDN边缘节点的时间；内容服务器时延，即终端用户和所选CDN服务器之间的往返时间。国内CDN服务商也针对CDN性能衡量提出通用指标，如阿里云CDN\footnote{https://help.aliyun.com/document\_detail/140425.html}和腾讯云\footnote{https://cloud.tencent.com/document/product/228/1198}认为CDN的时延性能、命中率以及丢包率较为重要。
-
-网络时延测量方面的研究主要有%方面的研究主要体现在测量方式%和可靠性保障两方面。
-北京航空航天大学的张兴军\cite{2005内容分发网络性能测量方法研究与实现}等人借助可定制的网络测量基础设施构建了CDN测量平台。吴金福\cite{吴金福2014中国大陆}借助HTTP代理对CDN进行测量。Krishna等人提出了King\cite{King-2002}方法来测量端到端的估计时延，Huang\cite{Huang2008}在对CDN进行测绘时采取的增强King方法便由此改进而来。Zhang\cite{Zhang-2021-Scale-platform}基于DNS欺骗原理，提出了一种轻量化统计延迟测量平台，使用两个DNS服务器之间的时延代表两个主机之间的端到端时延。%北京邮电大学康梦晓\cite{康梦晓2014IP}利用PLE算法进行测量，并在分布参数估计部分进行改进，减少了时延量化间隔数，降低PLE算法的复杂度。胡治国\cite{胡治国2017IP}等人指出，当前测量难点主要体现在单向时延测量，由时钟频差和时钟偏差的相互作用以及非对称路径下的时延测量两方面阻碍。
 
 
 % Local Variables:

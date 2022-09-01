@@ -35,8 +35,27 @@
 \usetikzlibrary{backgrounds,mindmap}
 \graphicspath{{figures/}}
 
+\usepackage{tocloft}
+% \usepackage[titles,subfigure]{tocloft}
 
 \begin{document}
+\renewcommand{\contentsname}{\hspace*{\fill}目\quad 录\hspace*{\fill}}
+\setlength\cftbeforesecskip{0.5em}
+\setlength\cftbeforesubsecskip{0.5em}
+\setlength\cftbeforesubsubsecskip{0.5em}
+% \setlength\cftaftersecskip{0.5em}
+% \setlength\cftaftersubsecskip{0.5em}
+% \setlength\cftaftersubsubsecskip{0.5em} 
+
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+ 
+
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+
+
 \captionsetup[figure]{labelsep=space} 
 \captionsetup[table]{labelsep=space}
 

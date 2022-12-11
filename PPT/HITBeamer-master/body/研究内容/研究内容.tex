@@ -1,0 +1,62 @@
+\section{研究内容}
+ 
+\subsection{可信环境建立}
+
+\begin{frame}{待分析流量获取}
+    \begin{itemize}[<+->]
+        \item 操作系统
+        \begin{itemize}[<+->]
+            \item 环境搭建（借助QEMU\upcite{敖权2018基于QEMU的Linux应用异常通信行为分析}等\alert{虚拟化}平台）
+            \item 干扰过滤（使用\alert{Whois}信息剔除非OS厂商域名所属软件/插件）
+        \end{itemize}
+        \item 流量提取（\alert{完整性}）
+        \begin{itemize}[<+->]
+            \item 理论层面分析（提取\alert{原理}）
+            \item 宿主机流量对比校验（从流量\alert{路径}多点对比）
+            \item 多种\alert{提取方式}对比校验
+        \end{itemize}
+        \item 数据预处理
+        \begin{itemize}[<+->]
+            \item 流量分组（聚集域名通信行为的协议栈流量）
+            \item 服务定位（\alert{标注}流量组对应的服务，含功能、地址、归属\ldots）
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{流量内部分析（内容层面）}
+
+\begin{frame}{流量内容敏感性判定}
+    \begin{itemize}
+        \item 目的：敏感流量/文件传输行为发现
+        \item 方案：
+            \begin{itemize}
+                \item 加密流量解析
+                \item 可定制化敏感流量分析模型
+                    \begin{itemize}
+                        \item 可配置匹配特征库
+                        \item 流量敏感性分析
+                        \item 流量归属判别（如隶属应用、端口\ldots）
+                    \end{itemize}
+            \end{itemize}
+        \item 预期结果
+            \begin{itemize}
+                \item 预警敏感外泄
+                \item 期望做到敏感流量阻断
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\subsection{流量外部分析（特征层面）}
+
+\begin{frame}{流量特征风险性判定}
+    \begin{itemize}
+        \item 目的：流量攻击检测
+        \item 方案
+            \begin{itemize}
+                \item 数据集：\href{https://www.kdd.org/kdd-cup/view/kdd-cup-1999}{KDD CUP99}
+                \item 识别模型：SVM、随机森林、决策树\ldots
+            \end{itemize}
+        \item 预期结果：给定流量特征，推断其为攻击流量的概率
+    \end{itemize}
+\end{frame}

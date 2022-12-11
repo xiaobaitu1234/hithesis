@@ -1,0 +1,48 @@
+\section{课题背景}
+\subsection{政策规定}
+\begin{frame}{用户隐私\&安全}
+    % \begin{itemize}[<+->] % 当然，除了alert，手动在里面插 \pause 也行
+        \begin{itemize}
+        \item \href{http://www.cac.gov.cn/2022-09/08/c_1664260384702890.htm}{《互联网弹窗信息推送服务管理规定》}\upcite{互联网弹窗规定2022} \\ \textbf{第四条}\ 互联网弹窗信息推送服务提供者应当\ldots，建立健全\ldots 、\alert{数据安全和个人信息保护}\ldots 等管理制度。
+        \item \href{https://www.miit.gov.cn/zwgk/zcwj/wjfb/txy/art/2020/art_ef035831a43142259ccab5a758704747.html}{APP侵害用户权益专项整治工作}\\ \alert{违规收集}用户个人信息
+        \item \href{https://www.cert.org.cn/publish/main/upload/File/CNCERTreport202207.pdf}{CNCERT互联网安全威胁报告}\\ 木马、僵尸网络、网站篡改、安全漏洞\ldots
+    \end{itemize} 
+\end{frame}
+
+\subsection{软件使用情况}
+
+\begin{frame}{恶意行为}
+    % \begin{description}[<+->] % 当然，除了alert，手动在里面插 \pause 也行
+        \begin{description}
+        \item[恶意程序] CNCERT通报下架移动互联网恶意程序达到2075个\upcite{CNCERT2022}(2022年6月)
+        \item[软件漏洞] Spring \href{https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement}{CVE-2022-22965
+} 可使攻击者获取目标主机权限（2022年4月）
+        \item[软件后门] “即刻PDF阅读器”内置\href{https://www.huorong.cn/info/1660892844878.html}{后门} ，收集用户隐私（2022年8月）
+    \end{description}
+\end{frame}
+
+\begin{frame}{软件安全}
+    % \begin{description}[<+->] % 当然，除了alert，手动在里面插 \pause 也行
+        \begin{description}
+        \item[关注恶意软件] 病毒、蠕虫、木马、间谍软件、勒索软件、恐吓软件、僵尸程序、后门 \ldots
+        \item[关注常用软件] MS Office、WPS、Matlab、CAD、ProE、常用APP \ldots
+    \end{description}
+\end{frame}
+
+\begin{frame}{操作系统占比}
+    % From thuthesis user guide.
+    \begin{minipage}[c]{0.4\linewidth}
+        图\ref{fig:中国主流操作系统使用占比}数据源于\href{https://gs.statcounter.com/os-market-share/all/china}{statcounter}，数据显示，目前Windows及Android较受欢迎。因此，本研究优先考虑\alert{Windows}操作系统。截至Nov 2022，Win10占据Windows系统\href{https://gs.statcounter.com/os-version-market-share/windows/desktop/china}{61\%份额}，因此，优先考虑Win10系统。
+    \end{minipage}
+    \begin{minipage}{0.55\linewidth}
+        \medskip
+        %\hspace{2cm}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width =0.75\textwidth]{fig/OS占比.pdf}
+            \caption{中国主流操作系统使用占比}
+            \label{fig:中国主流操作系统使用占比}
+        \end{figure} 
+    \end{minipage}
+\end{frame}
+

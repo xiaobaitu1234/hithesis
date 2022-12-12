@@ -1,0 +1,80 @@
+% !Mode:: "TeX:UTF-8"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          ,
+%      /\^/`\
+%     | \/   |                CONGRATULATIONS!
+%     | |    |             SPRING IS IN THE AIR!
+%     \ \    /                                                _ _
+%      '\\//'                                               _{ ' }_
+%        ||                     hithesis v3                { `.!.` }
+%        ||                                                ',_/Y\_,'
+%        ||  ,                   dustincys                   {_,_}
+%    |\  ||  |\          Email: yanshuoc@gmail.com             |
+%    | | ||  | |            https://yanshuo.name             (\|  /)
+%    | | || / /                                               \| //
+%    \ \||/ /       https://github.com/dustincys/hithesis      |//
+%      `\\//`   \\   \./    \\ /     //    \\./   \\   //   \\ |/ /
+%     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[fontset=fandol,toc=true,type=master,stage=midterm,campus=harbin]{hithesisart}
+% 此处选项中不要有空格
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 必填选项
+% type=doctor|master|bachelor
+% stage=opening|midterm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 选填选项（选填选项的缺省值已经尽可能满足了大多数需求，除非明确知道自己有什么
+% 需求）
+% campus=shenzhen|weihai|harbin
+%   含义：校区选项，默认harbin
+% fontset=windows|mac|ubuntu|fandol
+%   含义：前三个对应各自系统，fandol是开源字体。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{2\ccwd}
+
+% 修改图表引用格式
+\usepackage{caption}
+\captionsetup[figure]{labelsep=space} 
+\captionsetup[table]{labelsep=space}
+
+\graphicspath{{figures/}}
+
+\usepackage[subfigure]{tocloft}
+
+\begin{document}
+ 
+\renewcommand{\contentsname}{\hspace*{\fill}目\quad 录\hspace*{\fill}} 
+\setlength\cftbeforesecskip{0.5em}
+\setlength\cftbeforesubsecskip{0.5em}
+\setlength\cftbeforesubsubsecskip{0.5em}
+% \setlength\cftaftersecskip{0.5em}
+% \setlength\cftaftersubsecskip{0.5em}
+% \setlength\cftaftersubsubsecskip{0.5em} 
+
+\renewcommand\cftsecdotsep{\cftdotsep}
+\renewcommand\cftsecleader{\cftdotfill{\cftsecdotsep}}
+ 
+
+\makeatletter
+\let\ps@plain\ps@empty
+\makeatother
+
+
+\input{front/coverart.tex}
+\makecover
+
+\input{body/section_1_研究背景.tex}
+\input{body/section_2_国内外现状.tex}
+\input{body/section_3_主要研究内容.tex}
+\input{body/section_4_预期方案目标.tex}
+\input{body/section_5_其他.tex}
+
+\section{主要参考文献}
+\bibliographystyle{hithesis}
+\bibliography{reference}
+
+\end{document} 
+
+% Local Variables:
+% TeX-engine: xetex
+% End:
